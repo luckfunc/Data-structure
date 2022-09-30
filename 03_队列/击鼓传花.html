@@ -53,11 +53,16 @@ function Queue () {
       //2.将所有人加入到队列中
       for (let index = 0; index < nameList.length; index++) {
         const arr = queue.enqueue(nameList[index]);
-
+        if(num < 1){
+          num--;
+          arr.enqueue(arr.dequeue());
+        }
       }
-      console.log(queue);
+      // console.log(queue);
+      return arr;
   }  
-  passGame(['a', 'b', 'c']);
+  
+  console.log(passGame(['a', 'b', 'c'], 1));
 </script>
 </body>
 </html>
