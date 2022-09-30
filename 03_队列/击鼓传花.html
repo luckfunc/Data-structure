@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>击鼓传花</title>
+</head>
+<body>
+
+<script>
+  const arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+  const newArr = [];
+
+  function sort (num) {
+    for (let i = 0; i < arr.length; i++, num--  ) {
+        if (num-1 >= 0)    newArr.push(arr[num]);
+    }
+    return newArr.shift();
+  }
+
+  console.log(sort(1))
+
+
+
+</script>
+</body>
+</html>
