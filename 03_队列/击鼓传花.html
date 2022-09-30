@@ -7,20 +7,50 @@
 <body>
 
 <script>
-  const arr = ['a', 'b', 'c', 'd', 'e', 'f'];
-  const newArr = [];
+function Queue () {
+    //属性
+    this.items = [];
+    //方法
+    //在后端添加元素  一个元素或多个元素
+    Queue.prototype.enqueue = (element) => {
 
-  function sort (num) {
-    for (let i = 0; i < arr.length; i++, num--  ) {
-        if (num-1 >= 0)    newArr.push(arr[num]);
+      // this.items.splice(this.items.length, element.length-1, [...element])
+      this.items.push(element)
     }
-    return newArr.shift();
+
+    // 删除第一个元素 dequeue
+    Queue.prototype.dequeue = () => {
+      this.items.shift()
+    }
+
+    //front  返回队列第一个元素
+    Queue.prototype.front = () => {
+      // if (this.items.length !== 0) return undefined;
+      return this.items[0]
+    }
+    //isEmpty 判断元素是否为空
+    Queue.prototype.isEmpty = () => {
+
+      return this.items.length == 0
+    }
+    Queue.prototype.size = () => {
+      return this.items.length
+    }
+    //把队列中的元素转换为字符串
+
+    Queue.prototype.toString = () => {
+      let str = ''
+      for (let i = 0; i < this.items.length; i++) {
+        str += this.items[i] + '  '
+      }
+      return str
+    }
   }
-
-  console.log(sort(1))
-
-
-
+  function sort() {
+      const queue = new Queue();
+      console.log(queue);
+  }  
+  sort();
 </script>
 </body>
 </html>
