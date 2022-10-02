@@ -48,20 +48,23 @@ function Queue () {
   }
   function passGame(nameList, num) {
     //1.创建队列结构
-
       const queue = new Queue(); 
       //2.将所有人加入到队列中
       for (let index = 0; index < nameList.length; index++) {
         const arr = queue.enqueue(nameList[index]);
-        if(num < 1){
-          num--;
           arr.enqueue(arr.dequeue());
-        }
+          //1.开始的时候不是num的时候 加入到末尾
+          //2.是num的时候将num从队列删除掉
+          //3.1 num数字之前的人重新放到队列的末尾
+          for (let index = 0; index < array.length; index++) {
+              queue.enqueue(queue.dequeue());
+
+          }
+          //num对应这个人直接淘汰
       }
       // console.log(queue);
-      return arr;
+      return arr; 
   }  
-  
   console.log(passGame(['a', 'b', 'c'], 1));
 </script>
 </body>
