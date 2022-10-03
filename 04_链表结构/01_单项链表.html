@@ -19,8 +19,8 @@
                 this.length = 0; //用于记录数组的长度
                 //1.追加元素
                 LinkedList.prototype.append = function (data) {
-                    //                1.通过data创建节点     抽取创建新的节点        const newNode = new Node(data);
-
+                    //                1.通过data创建节点     抽取创建新的节点        
+                    const newNode = new Node(data);
 
                     //2.判断是否是第一个节点
                     if (this.length == 0){
@@ -29,20 +29,43 @@
                     }else {
                         //2.2不是第一个节点
                         //current表示头部
-                        let current = this.head;
+                        var current = this.head;
                         //当节点next存在 证明不是最后一个节点
-                        while(current.next){
+                        while(current.next){ 
                             //找到最后一个节点
                             current = current.next;
                         }
                          //当节点next不存在 表示找到最后一个节点了
                         current.next = newNode //在最后一个节点添加新的元素  最后节点的next指向新的节点
                     }
+                     // 3. length + 1
+                        this.length += 1;
                 }
-                // 3. length + 1
-                this.length += 1;
+               
+                //toString 方法
+              LinkedList.prototype.toString = function () {
+                  //1.定义变量
+                  var current = this.head;
+                  let listString = '';
+                  //2.循环获取节点
+                  while(current){ 
+                    listString += current.data + ' ';
+                    current = current.next;
+                  }
+
+                  return listString
+
+              }
             }
-    
+            //测试代码
+            const list = new LinkedList();
+            //测试append方法
+            list.append('123');
+            list.append('234');
+            list.append('345');
+            alert(list);
+             
+            
 </script>
 </body>
 </html>
