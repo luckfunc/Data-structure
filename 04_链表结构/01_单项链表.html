@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单项链表</title>
+</head>
+<body>
+<script !src="">
+            //封装链表类
+            function LinkedList() {
+                //内部类
+                function Node(data){
+                    this.data = data;
+                    this.next = null;
+              }
+
+                //属性
+                this.head = null;
+                this.length = 0; //用于记录数组的长度
+                //1.追加元素
+                LinkedList.prototype.append = function (data) {
+                    //                1.通过data创建节点     抽取创建新的节点        const newNode = new Node(data);
+
+
+                    //2.判断是否是第一个节点
+                    if (this.length == 0){
+                        //2.1表示是第一个节点
+                        this.head = newNode;
+                    }else {
+                        //2.2不是第一个节点
+                        //current表示头部
+                        let current = this.head;
+                        //当节点next存在 证明不是最后一个节点
+                        while(current.next){
+                            //找到最后一个节点
+                            current = current.next;
+                        }
+                         //当节点next不存在 表示找到最后一个节点了
+                        current.next = newNode //在最后一个节点添加新的元素  最后节点的next指向新的节点
+                    }
+                }
+                // 3. length + 1
+                this.length += 1;
+            }
+    
+</script>
+</body>
+</html>
