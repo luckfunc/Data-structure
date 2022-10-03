@@ -30,7 +30,8 @@
         let added = false;
         for (let i = 0; i < this.items.length; i++) {
           if (queueElement.priority < this.items[i].priority) {
-            this.items.splice(i, 0, queueElement)
+            this.items.splice(i, 0, queueElement);
+            console.log(this.items);
             added = true;
             break;
           } else {
@@ -74,7 +75,7 @@
   pq.enqueue('123', 1123);
   pq.enqueue('1234', 22);
   pq.enqueue('12345', 31);
-  alert(pq)
+  console.log(pq)
 </script>
 
 </body>
