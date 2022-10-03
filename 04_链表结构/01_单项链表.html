@@ -56,14 +56,26 @@
                   return listString
 
               }
+
+              //insert 方法
+              LinkedList.prototype.insert = function(position, data){
+                //1.对position进行越界判断
+                if(position < 0 && position > this.length) return false;
+                
+                //2.创建节点
+                function Node (data) {
+                  this.data = data;
+                }
+
+              }
             }
-            //测试代码
+            /* //测试代码
             const list = new LinkedList();
             //测试append方法
             list.append('123');
             list.append('234');
             list.append('345');
-            alert(list);
+            alert(list); */
              
             
 </script>
