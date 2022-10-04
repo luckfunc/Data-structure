@@ -50,7 +50,8 @@
                   //2.循环获取节点
                   while(current){ 
                     listString += current.data + ' ';
-                    current = current.next;
+                    current = current.next; //为什么这里面current有值？    想了很久 发现在 48行 把this.head赋值给了current 为什么这样操作就有值了呢    this.head 是一个引用类型 把this.head赋值给了current  
+                    //指向同一个地址值    在append的时候 给current添加了next属性 代表this.head也有这个属性  所以current.next会有值 
                   }
 
                   return listString
