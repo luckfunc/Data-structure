@@ -17,6 +17,8 @@
                 //属性
                 this.head = null;
                 this.length = 0; //用于记录数组的长度
+                //测试
+                this.test = 0;
                 //1.追加元素
                 LinkedList.prototype.append = function (data) {
                     //                1.通过data创建节点     抽取创建新的节点        
@@ -34,6 +36,7 @@
                         while(current.next){ 
                             //找到最后一个节点
                             current = current.next;
+                          console.log('head', this.head);
                         }
                          //当节点next不存在 表示找到最后一个节点了
                         current.next = newNode //在最后一个节点添加新的元素  最后节点的next指向新的节点
