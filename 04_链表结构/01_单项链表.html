@@ -90,6 +90,26 @@
                 this.length ++ ;
                 return true; 
               }
+
+              //4. get 方法
+              LinkedList.prototype.get = function(position) {
+                //1.越界判断
+                if(position < 0 || position >= this.length) return null;
+                  //position 表示的就是索引
+                
+                let index = 0 ;
+                let current = this.head;
+                while( index ++  < position){
+
+                  current = current.next;
+                  // head ==> new 1 
+                  // current ==> new 1
+                }
+
+                return current.data;
+
+
+              }
             }
             //测试代码
             const list = new LinkedList();
@@ -97,8 +117,13 @@
             list.append('123');
             list.append('234');
             list.append('345');
-            const result = list.toString();
-            console.log(result);   
+            console.log(list.get(2))
+            //测试insert 方法
+            list.insert(1, 'xdd');
+            list.insert(3, 'asd');
+            alert(list)
+            alert(list.get(1));
+            alert(list.get(3))
 </script>
 </body>
 </html>
