@@ -61,13 +61,31 @@
               //insert 方法
               LinkedList.prototype.insert = function(position, data){
                 //1.对position进行越界判断
-                if(position < 0 && position > this.length) return false;
+                if(position < 0 || position > this.length) return false;
                 
                 //2.创建节点
-                function Node (data) {
-                  this.data = data;
-                }
+               const newNode = new Node(data);//在LinkedList 类里面声明了
+                //3.插入数据  情况1  插入到position = 0 的一个位置
+                if (position == 0) {
+                  //分两部分  把head指向newNode  把newNode.next 指向原来的第一个节点 
+                  newNode.next = this.head;
+                  this.head = newNode;
 
+                } else {
+                  //情况2 position > 0 || position < this.length
+                  let  index = 0;
+                  let current = this.head; 
+                  let previous = null; // 表示当前current前一个节点
+                  while(index ++ < position ){
+                    previous = current;
+                    current = current.next;
+                  }
+                  newNode.next = current;
+                  previous.next = newNode;
+                }
+                //4. 长度+1 
+                this.length ++ ;
+                return true; 
               }
             }
             //测试代码
