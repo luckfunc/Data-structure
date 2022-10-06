@@ -179,21 +179,27 @@
         this.length -= 1;
         return current.data;
       }
-      //删除元素实现
+   /*    //删除元素实现
       LinkedList.prototype.remove = function(element) {
         let current = this.head; 
         let previous = null;
         while(current){
           if(current.data == element){
-            previous = current;
+            previous.next = current.next;
+            break;
           }
-          previous.next = current.next;
+          previous = current;
           current = current.next;
-
+          console.log(current, '@@@@@@@@asdsad');
         }
-
-
-
+       
+        this.length -= 1;
+      } */
+      //删除方法实现
+      LinkedList.prototype.remove = function(data){
+        //获取元素所在位置
+        let position = this.indexOf(data);
+        return  this.removeAt(position);
 
       }
       /*   LinkedList.prototype.update = function(position, data){
@@ -225,7 +231,7 @@
     list.append('123');
     list.append('234');
     list.append('345');
-    console.log(list);
+    // console.log(list);
     // console.log(list.get(2))
     //测试insert 方法
     list.insert(1, 'xdd');
@@ -239,9 +245,16 @@
     // alert(list)
     // list.removeAt(0);
     // alert(list)
-    console.log('删除前的list', list);
-     const delResult = list.removeAt(0);
-    console.log(list, delResult);
+    /*  const delResult = list.removeAt(0);
+    console.log(list, delResult); */
+    // alert(list);
+    console.log('删除前的list', list.toString());
+    list.remove('345');
+    list.remove('xdd');
+    // alert(list)
+    console.log('删除后的list', list.toString());
+    // list.remove('345');
+    // console.log(list.toString());
     // alert(list.update(0, 'aaa'))
   </script>
 </body>
