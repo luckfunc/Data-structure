@@ -156,6 +156,28 @@
         return true;
 
       }
+      /*   LinkedList.prototype.update = function(position, data){
+            if(position < 0 || position >= this.length) return false;
+            const newNode = new Node(data);
+            let current = this.head;
+            let previous = null;
+            let end = null;
+            let index = 0;
+            if(position == 0){
+              newNode.next = this.head.next;
+              this.head = newNode;
+            }else{
+              while(index ++ < position){
+                previous = current;
+                current = current.next;
+                end = current.next;
+              }
+              previous.next = newNode;
+              newNode.next = end;
+  
+            }
+  
+        } */
       LinkedList.prototype.removeAt = function (position) {
         if (position < 0 || position >= this.length) return null;
         let current = this.head;
@@ -204,6 +226,7 @@
         this.length -= 1;
         return temp;
       }
+
      /*  //删除方法实现
       LinkedList.prototype.remove = function(data){
         //获取元素所在位置
@@ -211,28 +234,16 @@
         return  this.removeAt(position);
 
       } */
-      /*   LinkedList.prototype.update = function(position, data){
-            if(position < 0 || position >= this.length) return false;
-            const newNode = new Node(data);
-            let current = this.head;
-            let previous = null;
-            let end = null;
-            let index = 0;
-            if(position == 0){
-              newNode.next = this.head.next;
-              this.head = newNode;
-            }else{
-              while(index ++ < position){
-                previous = current;
-                current = current.next;
-                end = current.next;
-              }
-              previous.next = newNode;
-              newNode.next = end;
-  
-            }
-  
-        } */
+      //isEmpty方法
+      LinkedList.prototype.isEmpty = function() {
+
+        return this.length == 0;
+      }
+      //Size方法
+      LinkedList.prototype.size = function(){
+
+        return this.length;
+      }
     }
     //测试代码
     const list = new LinkedList();
@@ -265,6 +276,8 @@
     list.remove('678');
     console.log(list.remove('123'))
     console.log('删除后的list', list.toString(), list.length);
+    console.log('isEmpty', list.isEmpty());
+    console.log('size', list.size());
     // alert(list)
     // console.log('删除后的list', list.toString());
     // list.remove('345');
