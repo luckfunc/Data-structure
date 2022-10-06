@@ -38,7 +38,7 @@
           while (current.next) {
             //找到最后一个节点
             current = current.next;
-            console.log('head', this.head);
+            // console.log('head', this.head);
           }
           //当节点next不存在 表示找到最后一个节点了
           current.next = newNode //在最后一个节点添加新的元素  最后节点的next指向新的节点
@@ -142,11 +142,11 @@
 
       }
       //update方法
-      LinkedList.prototype.update = function (position, newDate){
-        let index = 0 ;
-        let  current = this.head;
-        if(position < 0 || position >= this.length) return false;
-        while(index ++ < position){
+      LinkedList.prototype.update = function (position, newDate) {
+        let index = 0;
+        let current = this.head;
+        if (position < 0 || position >= this.length) return false;
+        while (index++ < position) {
 
           current = current.next;
 
@@ -156,29 +156,68 @@
         return true;
 
       }
+      LinkedList.prototype.removeAt = function (position) {
+        if (position < 0 || position >= this.length) return null;
+        let current = this.head;
+        if (position == 0) {
+          console.log(this.head);
+          this.head = current.next;
 
-    /*   LinkedList.prototype.update = function(position, data){
-          if(position < 0 || position >= this.length) return false;
-          const newNode = new Node(data);
-          let current = this.head;
+        } else {
+          let index = 0;
           let previous = null;
           let end = null;
-          let index = 0;
-          if(position == 0){
-            newNode.next = this.head.next;
-            this.head = newNode;
-          }else{
-            while(index ++ < position){
-              previous = current;
-              current = current.next;
-              end = current.next;
-            }
-            previous.next = newNode;
-            newNode.next = end;
-
+          while (index++ < position) {
+            previous = current;
+            current = current.next;
+            end = current.next;
           }
+          //current前一个指向current的next
+          previous.next = end;
 
-      } */
+        }
+        this.length -= 1;
+        return current.data;
+      }
+      //删除元素实现
+      LinkedList.prototype.remove = function(element) {
+        let current = this.head; 
+        let previous = null;
+        while(current){
+          if(current.data == element){
+            previous = current;
+          }
+          previous.next = current.next;
+          current = current.next;
+
+        }
+
+
+
+
+      }
+      /*   LinkedList.prototype.update = function(position, data){
+            if(position < 0 || position >= this.length) return false;
+            const newNode = new Node(data);
+            let current = this.head;
+            let previous = null;
+            let end = null;
+            let index = 0;
+            if(position == 0){
+              newNode.next = this.head.next;
+              this.head = newNode;
+            }else{
+              while(index ++ < position){
+                previous = current;
+                current = current.next;
+                end = current.next;
+              }
+              previous.next = newNode;
+              newNode.next = end;
+  
+            }
+  
+        } */
     }
     //测试代码
     const list = new LinkedList();
@@ -186,7 +225,8 @@
     list.append('123');
     list.append('234');
     list.append('345');
-    console.log(list.get(2))
+    console.log(list);
+    // console.log(list.get(2))
     //测试insert 方法
     list.insert(1, 'xdd');
     list.insert(3, 'asd');
@@ -194,9 +234,14 @@
     alert(list.get(1));
     alert(list.get(3)) */
     // alert(list.indexOf('1111'))
-    alert(list)
+    // alert(list)
     list.update(2, '薛军栋');
-    alert(list)
+    // alert(list)
+    // list.removeAt(0);
+    // alert(list)
+    console.log('删除前的list', list);
+     const delResult = list.removeAt(0);
+    console.log(list, delResult);
     // alert(list.update(0, 'aaa'))
   </script>
 </body>
