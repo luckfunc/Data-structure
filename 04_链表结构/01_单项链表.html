@@ -179,29 +179,38 @@
         this.length -= 1;
         return current.data;
       }
-   /*    //删除元素实现
+      //删除元素实现
       LinkedList.prototype.remove = function(element) {
         let current = this.head; 
         let previous = null;
-        while(current){
+        let temp = null;
+        if(this.indexOf(element) == 0 ){ 
+          temp = this.head;
+          this.head = this.head.next;
+          this.length -= 1;
+          return temp;
+        }else{
+
+          while(current){
           if(current.data == element){
+            temp = current;
             previous.next = current.next;
             break;
           }
           previous = current;
           current = current.next;
-          console.log(current, '@@@@@@@@asdsad');
+          }
         }
-       
         this.length -= 1;
-      } */
-      //删除方法实现
+        return temp;
+      }
+     /*  //删除方法实现
       LinkedList.prototype.remove = function(data){
         //获取元素所在位置
         let position = this.indexOf(data);
         return  this.removeAt(position);
 
-      }
+      } */
       /*   LinkedList.prototype.update = function(position, data){
             if(position < 0 || position >= this.length) return false;
             const newNode = new Node(data);
@@ -231,28 +240,33 @@
     list.append('123');
     list.append('234');
     list.append('345');
+    list.append('456');
+    list.append('567');
+    list.append('678');
     // console.log(list);
     // console.log(list.get(2))
     //测试insert 方法
-    list.insert(1, 'xdd');
-    list.insert(3, 'asd');
+    // list.insert(1, 'xdd');
+    // list.insert(3, 'asd');
     /* alert(list)
     alert(list.get(1));
     alert(list.get(3)) */
     // alert(list.indexOf('1111'))
     // alert(list)
-    list.update(2, '薛军栋');
+    // list.update(2, '薛军栋');
     // alert(list)
     // list.removeAt(0);
     // alert(list)
     /*  const delResult = list.removeAt(0);
     console.log(list, delResult); */
     // alert(list);
-    console.log('删除前的list', list.toString());
+    console.log('删除前的list', list.toString(), list.length);
     list.remove('345');
-    list.remove('xdd');
+    list.remove('678');
+    console.log(list.remove('123'))
+    console.log('删除后的list', list.toString(), list.length);
     // alert(list)
-    console.log('删除后的list', list.toString());
+    // console.log('删除后的list', list.toString());
     // list.remove('345');
     // console.log(list.toString());
     // alert(list.update(0, 'aaa'))
