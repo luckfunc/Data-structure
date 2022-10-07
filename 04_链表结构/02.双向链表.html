@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>双向链表</title>
 </head>
-
 <body>
   <script>
     //封装双向链表
@@ -23,37 +22,62 @@
         this.next = null;
       }
 
-      //对常见的方法进行封装
+      //对常见的方法进行封装 append方法
       DoublyLinkedList.prototype.append = function (data) {
         const newNode = new Node(data);
         //1.判断是否是第一个节点
         if (this.length == 0) {
-          // newNode.prev = this.head;
           this.head = newNode;
+          this.tail = newNode;
         } else { //不是第一个节点
-          let current = this.head;
-          //找到最后一个节点
-          while (current.next) {
-            current = current.next;
-          }
-          //让最后一个节点指向新的节点
-          current.next = newNode;
-          // this.tail = newNode;  
-          // current.prev = current;
+         //与单链表不同  通过tail找到最后一个节点 添加节点直接找到最后一个 this.tail.next = newNode;
+         //在把newNode赋值给this.tail
+          this.tail.next = newNode;
+          newNode.prev = this.tail;
+          this.tail = newNode;
         }
         
         //长度加1
         this.length += 1;
 
+      }
+      //将链表转换为字符串
+        //2.1 toString()方法
 
+      DoublyLinkedList.prototype.toString = function() {
+        return this.backwardString();
+      }
+        //2.2 forwardString 方法
+      DoublyLinkedList.prototype.forwardString = function() {
+        let current = this.tail;
+        let resultString = '';
+        while(current){
+          resultString += current.data + ' '; 
+          current = current.prev;
+        }
+        return resultString;
 
       }
-
+        //2.3 backwardString方法 向后转换为字符串的方法
+      DoublyLinkedList.prototype.backwardString = function() {
+        //1.定义变量
+        let current = this.head; 
+        let resultString = '';
+        //获取current的data
+        while(current){
+          resultString += current.data + ' ';
+          current = current.next;
+        }
+        return resultString;
+      }
     }
     const list = new DoublyLinkedList();
     list.append('xdd');
     list.append('xdd111');
-    console.log(list);
+    console.log(list, 'list')
+    console.log(list.toString());
+    console.log(list.backwardString());
+    console.log(list.forwardString());
 
 
   </script>
