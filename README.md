@@ -12,5 +12,6 @@
       while(a.next){
         a = a.next
         //这样a指向了新的地址
-        
       }
+  ###
+    学习目标 每天一个commit
