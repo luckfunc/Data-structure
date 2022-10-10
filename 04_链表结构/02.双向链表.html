@@ -112,6 +112,17 @@
         return true;
          
       }
+
+      //get 方法
+      DoublyLinkedList.prototype.get = function(position){
+        let current = this.head;
+        let index = 0;
+        while(index ++ < position){
+          current = current.next;
+        }
+        return current.data;
+
+      }
     }
     const list = new DoublyLinkedList();
     // list.append('xdd');
