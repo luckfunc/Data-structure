@@ -215,6 +215,24 @@
         //根据下表值移除对应元素 
           return this.removeAt(index);
       }
+      //isEmpty方法
+      DoublyLinkedList.prototype.isEmpty = function(){
+        return this.length == 0;
+      }
+
+      //size方法实现
+      DoublyLinkedList.prototype.size = function() {
+        return this.length;
+      }
+
+      //获取链表的第一个元素
+      DoublyLinkedList.prototype.getHead = function(){
+        return this.head.data;
+      }
+      //获取链表的最后一个元素
+      DoublyLinkedList.prototype.getTail = function(){
+        return this.tail.data;
+      }
      
     }
     const list = new DoublyLinkedList();
@@ -241,6 +259,10 @@
     console.log('removeAt方法', list.removeAt(3))
     console.log('update方法', list.update(0, 'asd'))
     console.log( 'remove方法', list.remove('8'));
+    console.log('size方法', list.size())
+    console.log('isEmtpy方法', list.isEmpty());
+    console.log('getHead方法', list.getHead());
+    console.log('getTail方法', list.getTail());
     console.log(list.toString());
   </script>
 
