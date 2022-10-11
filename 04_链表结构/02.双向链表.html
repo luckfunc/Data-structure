@@ -133,6 +133,20 @@
           }
         }
         return current.data;
+      }
+      //indexOf方法
+      DoublyLinkedList.prototype.indexOf = function (element) {
+        let current = this.head;
+        let index = 0;
+        while(current){
+          if(current.data == element){
+            return index
+          }
+          current = current.next;
+          index ++ ;
+
+        }
+        return -1;
 
       }
     }
@@ -154,7 +168,8 @@
     list.insert(0, '0');
     list.insert(3, '我是三')
     console.log('this.length = ', list.length);
-    console.log(list.get(list.length - 3));
+    // console.log(list.get(list.length - 3));
+    console.log('indexOf方法', list.indexOf('1'))
     console.log(list.toString());
   </script>
 
