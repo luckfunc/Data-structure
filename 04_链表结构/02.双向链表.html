@@ -208,6 +208,14 @@
         return current.data;
       }
 
+      //remove方法
+      DoublyLinkedList.prototype.remove = function(data) {
+        //根据data获取下标值
+          const index = this.indexOf(data);
+        //根据下表值移除对应元素 
+          return this.removeAt(index);
+      }
+     
     }
     const list = new DoublyLinkedList();
     // list.append('xdd');
@@ -232,6 +240,7 @@
     console.log(list.toString(), '没有更新前的list');
     console.log('removeAt方法', list.removeAt(3))
     console.log('update方法', list.update(0, 'asd'))
+    console.log( 'remove方法', list.remove('8'));
     console.log(list.toString());
   </script>
 
