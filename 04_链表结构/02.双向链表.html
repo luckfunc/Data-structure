@@ -169,6 +169,44 @@
         current.data = newDate;
         return true;
       }
+      //removeAt方法
+      DoublyLinkedList.prototype.removeAt = function(position) {
+        //1.越界判断
+        if(position < 0 || position > this.length) return null;
+        //第一种情况 只有一个节点
+        //为了返回删除的数据
+        let current = this.head;
+        if(this.length == 1){
+          this.head = null;
+          this.tail = null;
+        }else{
+        if (position == 0) {
+          //如果节点个数不是1 删除第一个节点的情况
+          this.head.next.prev = null;
+          this.head = this.head.next;          
+        }else if(position == this.length - 1){
+          current = this.tail;
+          //要删除的是最后的节点
+          this.tail.prev.next = null;
+          this.tail = this.tail.prev;
+        }else{
+          //在中间的节点删除
+          let index = 0;
+          while(index ++ < position){
+            current = current.next;
+          }
+          current.prev.next = current.next;
+          current.next.prev = current.prev;
+          // current.prev = null;
+          // current.next = null; 不需要这两行 因为没有引用指向current即可 current可以有指向别人的属性
+        }
+
+      }
+
+        //长度减1
+        this.length -= 1;
+        return current.data;
+      }
      
     }
     const list = new DoublyLinkedList();
@@ -192,6 +230,7 @@
     // console.log(list.get(list.length - 3));
     console.log('indexOf方法', list.indexOf('1'))
     console.log(list.toString(), '没有更新前的list');
+    console.log('removeAt方法', list.removeAt(3))
     console.log('update方法', list.update(0, 'asd'))
     console.log(list.toString());
   </script>
