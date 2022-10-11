@@ -135,11 +135,11 @@
         return current.data;
       }
       //indexOf方法
-      DoublyLinkedList.prototype.indexOf = function (element) {
+      DoublyLinkedList.prototype.indexOf = function (data) {
         let current = this.head;
         let index = 0;
         while(current){
-          if(current.data == element){
+          if(current.data == data){
             return index
           }
           current = current.next;
@@ -149,6 +149,19 @@
         return -1;
 
       }
+      //update方法
+      DoublyLinkedList.prototype.update = function(position, newDate){
+        //越界判断
+        if(position < 0 || position >= this.length) return false;
+        let current = this.head;
+        let index = 0;
+        while(index ++ < position){
+          current = current.next;
+        }
+        current.data = newDate;
+        return true;
+      }
+     
     }
     const list = new DoublyLinkedList();
     // list.append('xdd');
@@ -170,6 +183,8 @@
     console.log('this.length = ', list.length);
     // console.log(list.get(list.length - 3));
     console.log('indexOf方法', list.indexOf('1'))
+    console.log(list.toString(), '没有更新前的list');
+    console.log('update方法', list.update(9, '我是九'))
     console.log(list.toString());
   </script>
 
