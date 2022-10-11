@@ -115,11 +115,22 @@
 
       //get 方法
       DoublyLinkedList.prototype.get = function(position){
-        let current = this.head;
-        let index = 0;
+        //1.越界判断
+        if (position < 0 || position >= this.length)  return null;
+        let current ;
+        let index ;
         //找到position对应的节点
-        while(index ++ < position){
+        //从前往后遍历存在效率有时候会很低
+        position < this.length / 2 ?  current = this.head : current = this.tail;
+        position < this.length / 2 ?  index = 0 : index = this.length - 1;
+        if (position < this.length / 2) {
+          while(index ++ < position){
           current = current.next;
+        }
+        }else{
+          while(index -- > position){
+            current = current.prev;
+          }
         }
         return current.data;
 
@@ -142,7 +153,8 @@
     list.append('8');
     list.insert(0, '0');
     list.insert(3, '我是三')
-    console.log(list);
+    console.log('this.length = ', list.length);
+    console.log(list.get(list.length - 3));
     console.log(list.toString());
   </script>
 
