@@ -117,6 +117,7 @@
       DoublyLinkedList.prototype.get = function(position){
         let current = this.head;
         let index = 0;
+        //找到position对应的节点
         while(index ++ < position){
           current = current.next;
         }
