@@ -50,3 +50,20 @@
     }
  
   }
+
+  //测试set类
+  const set = new Set();
+  set.add('a');
+  console.log('再次添加属性a' ,set.add('a'));
+  console.log('set判断有重复元素是否添加',set)
+  set.add('b');
+  set.add('c');
+  console.log('set添加方法', set);
+  console.log('set的has方法', set.has('a'));
+  set.remove('a');
+  console.log('set的remove方法', set);
+  console.log('set的size方法', set.size());
+  console.log('set的values方法', set.values());
+  set.clear();
+  console.log('set的clear方法', set);
+
