@@ -67,11 +67,29 @@
     keys = Object.keys(otherSet.items);
     values = otherSet.values();
     for (let index = 0; index < values.length; index++) {
-      console.log('keys', keys[index]);
-      console.log('values', values[index]);
       unionSet.add(keys[index], values[index]);      
     }
     return unionSet;
+    }
+
+    //交集方法实现
+    Set.prototype.intersetction = function(otherSet){
+      //创建新的集合
+      //this:集合A
+      //otherSet：集合B
+      const intersetctionSet = new Set();
+      let keys = Object.keys(this.items);
+      let values = this.values();
+     //从A集合中取出元素判断B中有吗 有的话则添加
+        for (let index = 0; index < keys.length; index++) {
+          let tempKey = keys[index];
+          let tempVal = values[index];
+          if (otherSet.has(tempKey)) {
+            intersetctionSet.add(tempKey, tempVal);
+          }
+        }
+        
+        return intersetctionSet;
     }
  
   }
@@ -108,4 +126,8 @@
 
   //获取并集
   const resultObj = setA.union(setB);
-  console.log(resultObj);
+  console.log('并集', resultObj.values());
+
+  //获取交集
+  const resultInterObj = setA.intersetction(setB);
+  console.log('交集', resultInterObj.values());
