@@ -48,10 +48,30 @@
     Set.prototype.values = function(){
       return Object.values(this.items) 
     }
+
+    //集合并集方法
+    Set.prototype.union = function(otherSet){
+    //this：集合对象A
+    //otherSet:集合对象B
+    //1.创建一个新的集合
+    const unionSet = new Set();   
+    //将A集合的所有元素全部添加到unionSet
+    let values = this.values(); //获取到元素的所有属性值得数组
+    for (let index = 0; index < values.length; index++) {
+          //添加每个元素
+          unionSet.add(values[index]);      
+    }   
+    // 3.取出集合B中的元素 判断是否需要添加到新集合
+    values = otherSet.values();
+    for (let index = 0; index < values.length; index++) {
+      unionSet.add(values[index]);      
+    }
+    return unionSet;
+    }
  
   }
 
-  //测试set类
+ /*  //测试set类
   const set = new Set();
   set.add('a');
   console.log('再次添加属性a' ,set.add('a'));
@@ -65,5 +85,22 @@
   console.log('set的size方法', set.size());
   console.log('set的values方法', set.values());
   set.clear();
-  console.log('set的clear方法', set);
+  console.log('set的clear方法', set); */
 
+  //测试并集
+  //创建集合A
+  const setA = new Set();
+  setA.add('1');
+  setA.add('2');
+  setA.add('3');
+  setA.add('4');
+  //创建集合B
+  const setB = new Set();
+  setB.add('3');
+  setB.add('4');
+  setB.add('5');
+  setB.add('6');
+
+  //获取并集
+  const resultObj = setA.union(setB);
+  console.log(resultObj);
