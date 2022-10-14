@@ -104,6 +104,23 @@
         }
         return differenceSet;
     }
+
+    //子集方法
+    Set.prototype.subset = function(otherSet){
+      //this:集合A
+      //otherSet:集合B
+      //如果A集合中有元素不存在B集合中 返回false
+      //如果遍历后没有返回fasle 则返回true
+      let keys = Object.keys(this.items);
+      let values = this.values();
+      for (let index = 0; index < keys.length; index++) {
+          if (!otherSet.has(keys[index])) {
+            return false
+          }        
+      }
+      return true;
+
+    }
  
   }
 
@@ -152,3 +169,17 @@
   //获取差集
   const resultPoorObj = setA.difference(setB);
   console.log('差集', resultPoorObj.values());
+
+  //获取子集
+  const setC = new Set();
+  setC.add('key1', 'value1');
+  setC.add('key2', 'value2');
+  setC.add('key3', 'value3');
+  const setD = new Set();
+  setD.add('key1', 'value1');
+  setD.add('key2', 'value2');
+  setD.add('key3', 'value3');
+  setD.add('key4', 'value4');
+  setD.add('key5', 'value5');
+  const resultSubObj = setC.subset(setD);
+  console.log(resultSubObj);
