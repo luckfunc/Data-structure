@@ -91,6 +91,19 @@
         
         return intersetctionSet;
     }
+
+    //差集方法实现 X存在于A集合中但是不能存在B集合中
+    Set.prototype.difference = function(otherSet) {
+        const differenceSet = new Set();
+        let keys = Object.keys(this.items);
+        let values = this.values();
+        for (let index = 0; index < keys.length; index++) {
+            if (!otherSet.has(keys[index])) {
+              differenceSet.add(keys[index], values[index]);
+            }
+        }
+        return differenceSet;
+    }
  
   }
 
@@ -117,12 +130,16 @@
   setA.add('num2', 2);
   setA.add('num3', 3);
   setA.add('num4', 4);
+  setA.add('num5', 5);
+  console.log('集合A', Object.keys(setA.items));
   //创建集合B
   const setB = new Set();
   setB.add('num3', 24124);
   setB.add('num4', 123);
   setB.add('num5', 5);
   setB.add('num6', 6);
+  setB.add('num7', 7);
+  console.log('集合B', Object.keys(setB.items));
 
   //获取并集
   const resultObj = setA.union(setB);
@@ -131,3 +148,7 @@
   //获取交集
   const resultInterObj = setA.intersetction(setB);
   console.log('交集', resultInterObj.values());
+
+  //获取差集
+  const resultPoorObj = setA.difference(setB);
+  console.log('差集', resultPoorObj.values());
