@@ -88,7 +88,6 @@
             intersetctionSet.add(tempKey, tempVal);
           }
         }
-        
         return intersetctionSet;
     }
 
