@@ -8,7 +8,17 @@ function hashFun(str, size) {
   //2.霍纳法则，来计算hashCode的值
   //cats -> Unicode编码
   for (let index = 0; index < str.length; index++) {
-    hasCode = 37 * hasCode + str.codeCharAt(index);
+    hasCode = 37 * hasCode + str.charCodeAt(index);
   }
+  //3.取余操作
+  let index = hasCode % size;
+
+  return index;
 
 }
+
+//测试hashFun函数
+console.log(hashFun('xdd', 7).toString());
+console.log(hashFun('asd', 7).toString());
+console.log(hashFun('aaa', 7).toString());
+console.log(hashFun('zxc', 7).toString());
