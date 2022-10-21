@@ -1,0 +1,8 @@
+ const str = 'abc';
+ hasCode = 37 * hasCode + str.charCodeAt(index);
+1.
+37 * 0 + 97 
+2.
+37 * (37 * 0 + 97) + 98
+3.
+37 * (37 * (37 * 0 + 97) + 98)  + 99
