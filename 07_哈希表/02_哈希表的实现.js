@@ -48,7 +48,7 @@
               return;
             }
       }
-      //新增数据
+      //新增数据 走到这里说明是新增操作 创建一个数组 然后push到桶里
       bucket.push([key, value]); 
       this.count += 1;
       }
