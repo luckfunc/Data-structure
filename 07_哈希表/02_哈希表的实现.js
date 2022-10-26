@@ -54,5 +54,34 @@
       this.count += 1;
       }
      }
+     //获取操作
+     HashTable.prototype.get = function(key){
+        //1.根据key获取index
+        let index = this.hashFun(key, this.limit);
+        console.log(index);
+        let bucket = this.storage[index];
+        //判断这个key对应的桶是否存在
+        if(!bucket) return null; //桶不存在 直接return 
+        for (let index = 0; index < bucket.length; index++) {
+          //走到这里说明key对应的桶存在  查找桶里面的元组
+          let tuple = bucket[index];
+          if (tuple[0] == key) {
+            console.log('tuple', tuple[1])
+            //桶里面存在这个元素 返回null// 可能元素对应的index一样 桶是一样的 但是桶里面可能没用对应的key
+            return tuple[1];
+          }          
+        }
+        //在桶里面查找 没用找到这个key 返回nu
+
+        return null;
+     }
      console.log(222);
   }
+  const hasObj = new HashTable();
+  hasObj.put('xdd',{
+    name: 'xdd',
+    age: 20,
+    address: '西安'
+  })
+  console.log(hasObj.get('xdd'));
+  
