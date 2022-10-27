@@ -82,9 +82,17 @@
       if (!bucket) return null;
       for (let index = 0; index < bucket.length; index++) {
         let tuple = bucket[index];
-          console.log('tuple',tuple)
         if (tuple[0] == key) {
+        console.log('bucket[index] ',bucket[index] )
           bucket.splice(index, 1);
+        /*   delete bucket[index];
+          bucket.length -= 1; */
+        /*   
+        delete bucket[index];
+          bucket.length -= 1;
+            为什么delete bucket[index]会报错 delete删除元素的时候 数组长度没有减去1
+             所以会再次进入循环 而这个桶的bucket[index] = undefined; undefined[0]会报错
+          */
           this.count --;
           return  tuple[1];
         }
@@ -102,5 +110,5 @@
     address: '西安'
   })
 console.log(hasObj.get('xdd'))  
-console.log('111', hasObj.remove('xdd'))
+console.log('remove了', hasObj.remove('xdd'))
 console.log(hasObj.get('xdd'))
