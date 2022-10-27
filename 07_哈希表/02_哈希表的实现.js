@@ -58,7 +58,7 @@
      HashTable.prototype.get = function(key){
         //1.根据key获取index
         let index = this.hashFun(key, this.limit);
-        console.log(index);
+        // console.log(index);
         let bucket = this.storage[index];
         //判断这个key对应的桶是否存在
         if(!bucket) return null; //桶不存在 直接return 
@@ -75,6 +75,24 @@
 
         return null;
      }
+     //删除操作
+     HashTable.prototype.remove = function(key){ 
+      let index = this.hashFun(key, this.limit);
+      let bucket = this.storage[index];
+      if (!bucket) return null;
+      for (let index = 0; index < bucket.length; index++) {
+        let tuple = bucket[index];
+          console.log('tuple',tuple)
+        if (tuple[0] == key) {
+          bucket.splice(index, 1);
+          this.count --;
+          return  tuple[1];
+        }
+        
+      }
+      //遍历完数据依然没有找到 返回null
+      return null;
+     }
      console.log(222);
   }
   const hasObj = new HashTable();
@@ -83,5 +101,6 @@
     age: 20,
     address: '西安'
   })
-  console.log(hasObj.get('xdd'));
-  
+console.log(hasObj.get('xdd'))  
+console.log('111', hasObj.remove('xdd'))
+console.log(hasObj.get('xdd'))
