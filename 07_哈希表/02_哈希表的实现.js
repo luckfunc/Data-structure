@@ -109,6 +109,6 @@
     age: 20,
     address: '西安'
   })
-console.log(hasObj.get('xdd'))  
+console.log(hasObj.get('xdd'));  
 console.log('remove了', hasObj.remove('xdd'))
-console.log(hasObj.get('xdd'))
+console.log(hasObj.get('xdd'));
