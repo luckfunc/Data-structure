@@ -54,6 +54,13 @@
       let temp = [key, value];
       bucket.push(temp); 
       this.count += 1;
+
+      //判断是否需要扩容操作
+      if (this.count > this.limit * 0.75) {
+        this.resize(this.limit * 2);
+        //可以使用
+        // this.resize(this.limit << 1);  7 左移  相当于 7 * 2的1次方
+      }
      }
      //获取操作
      HashTable.prototype.get = function(key){
@@ -95,6 +102,11 @@
              所以会再次进入循环 而这个桶的bucket[index] = undefined; undefined[0]会报错
           */
           this.count --;
+          //当删除的元素过多时 需要缩小容量
+          if (this.limit > 7 && this.count < this.limit * 0.25) {
+              this.resize(Math.floor(this.limit / 2));
+              
+          } 
           return  tuple[1];
         }
         
@@ -113,6 +125,28 @@
      HashTable.prototype.size = function() {
 
       return this.count;
+     }
+
+     //hashTable的扩容
+     HashTable.prototype.resize = function(newLimit) {
+      //保存旧的数组的内容
+      const oldStorage = this.storage;
+      //新的storage 重置所有属性
+      this.storage = [];
+      this.count = 0; 
+      this.limit = newLimit;
+      //遍历oldStorage里面所有的桶
+      for (let index = 0; index < oldStorage.length; index++) {
+        //取出对应的bucket
+        let bucket = oldStorage[index];
+        if(!bucket) continue;           //如果bucket为空的话 bucket.length会报错的  所有必须判断一下 
+        //bucket中有数据,取出数据重新插入
+        for (let index = 0; index < bucket.length; index++) {
+              let tuple = bucket[index];
+              this.put(tuple[0], tuple[1]);          
+        }
+      }
+
      }
   }
   const hasObj = new HashTable();
