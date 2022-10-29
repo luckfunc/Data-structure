@@ -40,6 +40,8 @@
       if(bucket == null){
         bucket = [];
         this.storage[index] = bucket;
+      }
+
       //4.判断是否是修改数据
       for (let index = 0; index < bucket.length; index++) {
             let tuple = bucket[index];
@@ -52,7 +54,6 @@
       let temp = [key, value];
       bucket.push(temp); 
       this.count += 1;
-      }
      }
      //获取操作
      HashTable.prototype.get = function(key){
@@ -66,7 +67,7 @@
           //走到这里说明key对应的桶存在  查找桶里面的元组
           let tuple = bucket[index];
           if (tuple[0] == key) {
-            console.log('tuple', tuple[1])
+            // console.log('tuple', tuple[1])
             //桶里面存在这个元素 返回null// 可能元素对应的index一样 桶是一样的 但是桶里面可能没用对应的key
             return tuple[1];
           }          
@@ -101,14 +102,40 @@
       //遍历完数据依然没有找到 返回null
       return null;
      }
-     console.log(222);
+     // 其他方法
+     //判断hash表是否为空
+     HashTable.prototype.isEmpty = function() {
+
+      return this.count == 0;
+     }
+
+     //获取hash表中元素个数
+     HashTable.prototype.size = function() {
+
+      return this.count;
+     }
   }
   const hasObj = new HashTable();
-  hasObj.put('xdd',{
+  hasObj.put('xdd', {
     name: 'xdd',
     age: 20,
     address: '西安'
   })
-console.log(hasObj.get('xdd'));  
-console.log('remove了', hasObj.remove('xdd'))
-console.log(hasObj.get('xdd'));
+//测试hash表方法
+  hasObj.put('zt', {
+    name: 'zt',
+    age: 23,
+    gender: '女',
+    address: '西安'
+  });
+  console.log(hasObj.get('zt'), 'get方法');
+  console.log(hasObj.get('xdd'), 'get方法');
+  hasObj.put('xdd', {
+    name: 'roll',
+    address: 'yeahmobi'
+  });
+  console.log('hasObj修改后', hasObj.get('xdd'));
+  hasObj.remove('xdd'); 
+  console.log(hasObj.get('xdd'), '删除后xdd');
+  console.log(hasObj.size(), 'size方法');
+  console.log(hasObj.isEmpty(), 'isEmpty方法');
