@@ -57,7 +57,10 @@
 
       //判断是否需要扩容操作
       if (this.count > this.limit * 0.75) {
-        this.resize(this.limit * 2);
+            
+        let newSize = this.limit << 1;
+        let newPrime = this.getPrime(newSize);
+        this.resize(newPrime);
         //可以使用
         // this.resize(this.limit << 1);  7 左移  相当于 7 * 2的1次方
       }
@@ -104,7 +107,9 @@
           this.count --;
           //当删除的元素过多时 需要缩小容量
           if (this.limit > 7 && this.count < this.limit * 0.25) {
-              this.resize(Math.floor(this.limit / 2));
+            let newSize = Math.floor(this.limit >> 1);
+            let newPrime = this.getPrime(newSize);
+              this.resize(newPrime);
               
           } 
           return  tuple[1];
@@ -148,6 +153,31 @@
       }
 
      }
+
+     //判断是否是质数
+     HashTable.prototype.isPrime = function(num){
+
+        //1. 获取num的平方根
+        let temp = parseInt(Math.sqrt(num));
+        //2. 判断是否是质数
+        for (let index = 2; index <= temp; index++) {
+          if (num % index == 0 ) {
+            return false; 
+          }
+
+        } 
+        return true;
+     }
+
+     //获取质数的方法
+     HashTable.prototype.getPrime = function(num){
+      //找到最近的质数
+        while(!this.isPrime(num)){
+
+          num += 1;
+        }
+        return num;
+     }
   }
   const hasObj = new HashTable();
   hasObj.put('xdd', {
@@ -162,14 +192,82 @@
     gender: '女',
     address: '西安'
   });
+  /* 
   console.log(hasObj.get('zt'), 'get方法');
-  console.log(hasObj.get('xdd'), 'get方法');
+  console.log(hasObj.get('xdd'), 'get方法'); */
+  console.log(hasObj.limit, 'limit');
   hasObj.put('xdd', {
     name: 'roll',
     address: 'yeahmobi'
   });
-  console.log('hasObj修改后', hasObj.get('xdd'));
+  console.log(hasObj.limit, 'limit');
+
+  hasObj.put('xzc', 1);
+  hasObj.put('1', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('12', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('13', 1);
+  hasObj.put('14', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('15', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('156', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('1132', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('113而且完成', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('1123da', 1);
+  console.log(hasObj.limit, 'limit');
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('1123', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('145123', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('1123123', 1);
+  console.log(hasObj.limit, 'limit');
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('1123', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('113123', 1);
+  console.log(hasObj.limit, 'limit');
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('1231', 1);
+  hasObj.put('113123', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('1qwesad', 1);
+  console.log(hasObj.limit, 'limit');
+  hasObj.put('1312312', 1);
+  console.log(hasObj.limit, 'limit');
+
+  hasObj.put('1231231', 1);
+  hasObj.put('1112323', 1);
+  console.log(hasObj.limit, 'limit');
+
+  hasObj.put('1123qwe', 1);
+  hasObj.put('1123', 1);
+  console.log(hasObj.limit, 'limit');
+
+  hasObj.put('1qwesdasd', 1);
+  hasObj.put('1asdsad', 1);
+  hasObj.put('1qweasdzcx', 1);
+  hasObj.put('1qwewqe123', 1);
+  hasObj.put('1qweqweasd', 1);
+  hasObj.put('1zxc', 1);
+  hasObj.put('1zxc', 1);
+  hasObj.put('1qdwe', 1);
+  hasObj.put('2qweasd', 1);
+  hasObj.put('3qwe', 1);
+  hasObj.put('4asdzxc', 1);
+  hasObj.put('5asd', 1);
+  console.log(hasObj.limit, 'limit');
+
+  hasObj.put('sad', 1);
+  console.log(hasObj.limit, 'limit')
+  hasObj.put('zxc123', 1);
+  /* console.log('hasObj修改后', hasObj.get('xdd'));
   hasObj.remove('xdd'); 
   console.log(hasObj.get('xdd'), '删除后xdd');
   console.log(hasObj.size(), 'size方法');
-  console.log(hasObj.isEmpty(), 'isEmpty方法');
+  console.log(hasObj.isEmpty(), 'isEmpty方法'); */

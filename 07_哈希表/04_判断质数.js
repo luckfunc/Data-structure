@@ -13,7 +13,12 @@ function isPrime(num) {
 
 
 }
-console.log('isPrime', isPrime(1))
-console.log('isPrime', isPrime(2))
-console.log('isPrime', isPrime(3))
-console.log('isPrime', isPrime(4))
+(function() {
+  let arr = [];
+  for (let index = 0; index < 100; index++) {
+          if (isPrime(index)) {
+            arr.push(index);
+          }
+  }
+  console.log(arr, 'arr')
+})();
