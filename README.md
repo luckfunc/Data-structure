@@ -15,3 +15,5 @@
       }
   ###
     学习目标 每天一个commit(30号小目标 73 -83) 
+    const map = new Map(['1', '正确'], ['2', '错误'], ['3', '其他']);
+    const getMap = map.get(key);
