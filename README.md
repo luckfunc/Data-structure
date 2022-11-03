@@ -14,6 +14,11 @@
         //这样a指向了新的地址
       }
   ###
+<<<<<<< HEAD
     学习目标 每天一个commit() 
+=======
+    学习目标 每天一个commit(这周目标 79- 85) 
+>>>>>>> cab21b7569f7936ddaa57d07ab5a40e76a2685b6
     const map = new Map(['1', '正确'], ['2', '错误'], ['3', '其他']);
     const getMap = map.get(key);
+
