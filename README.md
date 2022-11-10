@@ -19,3 +19,21 @@
     const getMap = map.get(key);
 
 https://github.com/jpuri/react-draft-wysiwyg 富文本编辑器
+//antd 笔记
+场景： 在一个Form里面放了Switch组件当我请求配置页面的时候，需要请求接口 获取已有配置数据。但是后端返回的是1，2，3 我需要把后端返回的数据改为Word1， Word2，Word3
+在useEffect里面请求配置接口，setState(res.data)给form 
+const params = {
+  ...res.data,
+  enable: res.data.enable==1
+}
+setState(params);这样把请求回来的数据保存到State中
+这时候Switch里面是的enable是(true or false) 
+打开Modal的时候展示已经设置的Form values 
+当我在提交的时候 可以拿到已经输入的Form.values 但是此时我Switch的选中时True or false
+我需要把Switch转换为1，2，3
+const params = {
+  ...values,
+  enable: enable? 1 : 2
+}
+然后提交数据
+fetValues(params) 就可以了
