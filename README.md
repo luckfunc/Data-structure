@@ -37,3 +37,11 @@ const params = {
 }
 然后提交数据
 fetValues(params) 就可以了
+ 使用antd遇到的一个问题 from表单初始值给的后端返回的数据 但是当我前端需要根据用户操作改变显示的内容的时候 使用
+ form.setFieldsValue({
+    ...getFieldsValue(true),
+    //这里将需要更改的值放到这里
+    比如
+    enable: 1
+ });
+ //以后代码按照格式 不要出现多个缩进 分割不能出现多个空格
