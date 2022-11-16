@@ -1,4 +1,5 @@
 //封装二叉搜索树
+
   function BinarySearchTree() {
     //节点
     function Node(key) {

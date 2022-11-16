@@ -8,6 +8,12 @@
 
 <body>
   <script >
+   (function rewriteLog() {
+    const _ = console.log;
+    console.log = function () {
+        _(`%cConsole:`, `color:#FFF; background-color:black; font-size:16px; padding:2px`, ...arguments)
+    }
+  })();
     /* 
     单向链表的特点
       只能从头部遍历到尾部 或者从尾部遍历到头部
