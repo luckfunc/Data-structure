@@ -16,6 +16,23 @@ function hashFun(str, size) {
   return index;
 
 }
+/* 
+ const str = 'abc';
+ hasCode = 37 * hasCode + str.charCodeAt(index);
+    1.
+    37 * 0 + 97 
+    2.
+    37 * (37 * 0 + 97) + 98
+    3.
+    37 * (37 * (37 * 0 + 97) + 98)  + 99
+
+    ==>
+    37 * (37 * 97 + 98) + 99
+    97 * 37 * 37 + 37 * 98 + 99
+
+
+*/
+
 
 //测试hashFun函数
 console.log(hashFun('xdd', 7).toString());
